@@ -1,20 +1,20 @@
-import random
 from scapy.all import *
-target_IP = "10.0.0.2"
-source_port = "6553"
-i = 1
+from random import randrange
+from os import popen
+import time
 
-while True:
-   a = str(random.randint(1,254))
-   b = str(random.randint(1,254))
-   c = str(random.randint(1,254))
-   d = str(random.randint(1,254))
-   dot = '.'
-
-   Source_ip = a + dot + b + dot + c + dot + d
-   IP1 = IP(source_IP = Source_iP, destination = target_IP)
-   TCP1 = TCP(srcport = source_port, dstport = 6553)
-   pkt = IP1 / TCP1
-   send(pkt,inter = .001)
-   print ("packet sent ", i)
-   i = i + 1
+def main():
+	sendpacket()
+	
+def sendpacket():
+	destIP = "10.0.0.2"
+	print destIP
+	src_port = 80
+	dst_port = 1
+	interface = popen('ifconfig | awk \'/eth0/ {print $1}\'').read()
+	
+	packet = Ether()/IP(dst=dstIP,src="10.0.0.1"))/UDP(dport=dst_port,sport=src_port)
+	print(repr(packets))
+	sendp(packets,iface=interface.rstrip)
+	
+main()
